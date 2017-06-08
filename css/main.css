@@ -1,0 +1,274 @@
+@font-face {
+    font-family: BlackDiamonds;
+    src: url(fonts/BlackDiamonds.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: Gobold;
+    src: url(fonts/Gobold.tff);
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(fonts/Roboto-Regular.tff);
+}
+
+body {
+  margin: 0 0 0 0;
+  background-color: #f8eee3;
+  overflow: hidden !important;
+  height: 100vh;
+}
+
+.hide {
+	visibility: hidden !important;
+	margin-top: 100vh !important;
+	height: 0 !important;
+	overflow: hidden !important;
+}
+
+/* Home */
+.home,
+.about,
+.experience,
+.work,
+.contact {
+	position: absolute;
+	width: 100vw;
+	height: 70vh;
+	display: flex;
+	justify-content: center;
+	margin-top: 0;
+	transition: margin-top 0.2s;
+}
+
+.homeContainer {
+	width: auto;
+	height: auto;
+	align-self: center;
+	text-align: center;
+}
+
+.headerText {
+	font-family: BlackDiamonds, Fallback, Gobold;;
+	font-size: 10vh;
+	color: #fc2020;
+	display: block;
+}
+
+.subText {
+	margin-top: 1vh;
+	font-family: Gobold;
+	font-size: 3.5vh;
+	color: #fc2020;
+	display: block;
+}
+
+/* About */
+
+.aboutContainer {
+	align-self: center;
+	max-width: 100vh;
+	padding: 0 5vh;
+	height: auto;
+}
+
+.aboutContainer > span {
+	font-family: Roboto;
+	font-size: 2.5vh;
+	color: #4b4747;
+}
+
+/* Work */
+
+.workContainer {
+	align-self: center;
+	width: auto;
+	height: 100%;
+}
+
+.workDisplay {
+	margin-left: 15vw;
+	width: 35vw;
+	height: 100%;
+	float: left;
+	display: flex;
+	justify-content: center;
+}
+
+.workDisplay > img {
+	height: 35vh;
+	align-self: center;
+	display: none;
+}
+
+.showImage {
+	display: block !important;
+}
+
+.workText {
+	width: 50vw;
+	height: 100%;
+	float: left;
+	display: flex;
+}
+
+.workTextSection {
+	width: 95%;
+	margin-left: 5%;
+	height: 25vh;
+	align-self: center;
+}
+
+.workSelected {
+	background-color: white !important;
+}
+
+.workTextBox {
+	width: 100%;
+	height: calc(100% / 3);
+	display: flex;
+	cursor: pointer;
+}
+
+.workTextBox:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.workTextBox > div {
+	align-self: center;
+	width: 100%;
+	height: auto;
+}
+
+.workTextBox > div > span {
+	padding-left: 2.5vh;
+	display: block;
+	font-family: Roboto;
+	color: #4b4747;
+}
+
+/* Experience */
+
+.experienceForm {
+	padding: 0 3vh;
+	align-self: center;
+}
+
+.workTitle {
+	font-weight: 600;
+}
+
+.tableTitle {
+	padding-top: 3vh;
+	font-family: Roboto;
+	color: #4b4747;
+	font-weight: bold;
+	font-size: 2.5vh;
+}
+
+.tableSubTitle {
+	font-family: Roboto;
+	color: #4b4747;
+	font-size: 2.5vh;
+}
+
+.tableYear {
+	font-family: Roboto;
+	color: #4b4747;
+	font-size: 2.5vh;
+	padding-left: 15vw;
+}
+
+/* Contact */
+
+.contactContainer {
+	align-self: center;
+}
+
+.contactContainer > span,
+.contactContainer > a {
+	display: block;
+	font-family: Roboto;
+	color: #4b4747;
+	font-size: 2.5vh;
+	padding: 2vh 0;
+}
+
+.contactContainer > a {
+	color: #5291d9;
+	text-decoration: none;
+}
+
+.contactContainer > a:hover {
+	color: #4778b0;
+}
+
+/* Navigation */
+
+.navigation {
+	background-color: #f8eee3;
+	position: absolute;
+	bottom: 0;
+	width: 100vw;
+	height: 30vh;
+	text-align: center;
+}
+
+.navigation > span {
+	font-family: Gobold;
+	font-size: 3vh;
+	color: #4b4747;
+	padding: 0.5vh 5vh;
+	cursor: pointer;
+}
+
+.navigation > span:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.navSelect {
+	background-color: white !important;
+}
+
+@media only screen and (max-width: 768px) {
+
+	.navigation {
+		margin-top: -5vh;
+	}
+	
+    .navigation > span {
+    	display: block;
+    }
+
+    .tableYear {
+		padding-left: 5vw;
+	}
+
+	.workText {
+		display: block;
+		width: 100%;
+		padding: 0;
+	}
+
+	.workTextSection {
+		width: 100%;
+		height: 30vh;
+		margin: 0;
+	}
+
+	.workTextBox > div > span {
+		font-size: 2.5vh;
+	}
+
+	.workDisplay {
+		width: 100vw;
+		height: 50%;
+		margin: 0;
+	}
+
+	.workDisplay > img {
+		width: auto;
+		height: 85%;
+	}
+}
