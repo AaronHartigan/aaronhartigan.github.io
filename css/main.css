@@ -5,12 +5,12 @@
 
 @font-face {
     font-family: Gobold;
-    src: url(../fonts/Gobold.tff);
+    src: url(../fonts/Gobold.ttf);
 }
 
 @font-face {
     font-family: Roboto;
-    src: url(../fonts/Roboto-Regular.tff);
+    src: url(../fonts/Roboto-Regular.ttf);
 }
 
 body {
