@@ -1,3 +1,15 @@
+// Preload images
+imageList = [
+  "flcmobile.gif",
+  "ssi.gif",
+  "upchime.gif",
+];
+
+imageList.forEach(function(path) {
+  new Image().src=`img/${path}`;
+});
+
+// add navigation click
 let imageSelected = false;
 
 $('.navigation > span').click(function() {
@@ -19,6 +31,7 @@ $('.navigation > span').click(function() {
   }
 })
 
+// add portfolio items click
 $('.workTextBox').click(function() {
   $('.workTextBox').removeClass('workSelected');
   $(this).addClass('workSelected');
