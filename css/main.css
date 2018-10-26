@@ -50,15 +50,15 @@ body {
 
 .headerText {
 	font-family: BlackDiamonds, Fallback, Gobold;;
-	font-size: 24px;
+	font-size: 84px;
 	color: #fc2020;
 	display: block;
 }
 
 .subText {
-	margin-top: 1vh;
+	margin-top: 12px;
 	font-family: Gobold;
-	font-size: 3.5vh;
+	font-size: 36px;
 	color: #fc2020;
 	display: block;
 }
@@ -67,14 +67,14 @@ body {
 
 .aboutContainer {
 	align-self: center;
-	max-width: 100vh;
-	padding: 0 5vh;
+	max-width: 100%;
+	padding: 60px;
 	height: auto;
 }
 
 .aboutContainer > span {
 	font-family: Roboto;
-	font-size: 2.5vh;
+	font-size: 24px;
 	color: #4b4747;
 }
 
