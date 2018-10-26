@@ -84,8 +84,8 @@ body {
 }
 
 .workDisplay {
-	margin-left: 15vw;
-	width: 35vw;
+	margin-left: 60px;
+	width: 35%;
 	height: 100%;
 	float: left;
 	display: flex;
@@ -139,7 +139,7 @@ body {
 }
 
 .workTextBox > div > span {
-	padding-left: 2.5vh;
+	padding-left: 30px;
 	display: block;
 	font-family: Roboto;
 	color: #4b4747;
@@ -148,7 +148,7 @@ body {
 /* Experience */
 
 .experienceForm {
-	padding: 0 3vh;
+	padding: 0 30px;
 	align-self: center;
 }
 
