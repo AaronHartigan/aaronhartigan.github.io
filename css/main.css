@@ -16,7 +16,6 @@
 body {
 	margin: 0 0 0 0;
 	background-color: #f8eee3;
-	overflow: hidden !important;
 	font-family: Roboto;
 	font-size: 24px;
 	color: #4b4747;
@@ -246,4 +245,6 @@ body {
 		width: 85%;
 		height: 85%;
 	}
+	
+	.aboutContainer: padding: 0;
 }
