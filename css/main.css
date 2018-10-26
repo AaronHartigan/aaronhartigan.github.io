@@ -1,22 +1,25 @@
 @font-face {
-    font-family: BlackDiamonds;
-    src: url(../fonts/BlackDiamonds.ttf) format("truetype");
+	font-family: BlackDiamonds;
+	src: url(../fonts/BlackDiamonds.ttf) format("truetype");
 }
 
 @font-face {
-    font-family: Gobold;
-    src: url(../fonts/Gobold.ttf);
+	font-family: Gobold;
+	src: url(../fonts/Gobold.ttf);
 }
 
 @font-face {
-    font-family: Roboto;
-    src: url(../fonts/Roboto-Regular.ttf);
+	font-family: Roboto;
+	src: url(../fonts/Roboto-Regular.ttf);
 }
 
 body {
-  margin: 0 0 0 0;
-  background-color: #f8eee3;
-  overflow: hidden !important;
+	margin: 0 0 0 0;
+	background-color: #f8eee3;
+	overflow: hidden !important;
+	font-family: Roboto;
+	font-size: 24px;
+	color: #4b4747;
 }
 
 .hide {
@@ -70,12 +73,6 @@ body {
 	max-width: 100%;
 	padding: 60px;
 	height: auto;
-}
-
-.aboutContainer > span {
-	font-family: Roboto;
-	font-size: 24px;
-	color: #4b4747;
 }
 
 /* Work */
@@ -161,22 +158,10 @@ body {
 
 .tableTitle {
 	padding-top: 3vh;
-	font-family: Roboto;
-	color: #4b4747;
 	font-weight: bold;
-	font-size: 2.5vh;
-}
-
-.tableSubTitle {
-	font-family: Roboto;
-	color: #4b4747;
-	font-size: 2.5vh;
 }
 
 .tableYear {
-	font-family: Roboto;
-	color: #4b4747;
-	font-size: 2.5vh;
 	padding-left: 15vw;
 }
 
@@ -189,9 +174,6 @@ body {
 .contactContainer > span,
 .contactContainer > a {
 	display: block;
-	font-family: Roboto;
-	color: #4b4747;
-	font-size: 2.5vh;
 	padding: 2vh 0;
 }
 
