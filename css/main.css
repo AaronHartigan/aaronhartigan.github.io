@@ -216,17 +216,12 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-
-	.navigation {
-		margin-top: -5vh;
-	}
-	
 	.navigation > span {
 		display: block;
 	}
 
 	.tableYear {
-		padding-left: 5vw;
+		padding-left: 15px;
 	}
 
 	.workText {
