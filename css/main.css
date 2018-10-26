@@ -17,12 +17,11 @@ body {
   margin: 0 0 0 0;
   background-color: #f8eee3;
   overflow: hidden !important;
-  height: 100vh;
 }
 
 .hide {
 	visibility: hidden !important;
-	margin-top: 100vh !important;
+	margin-top: 100% !important;
 	height: 0 !important;
 	overflow: hidden !important;
 }
@@ -34,8 +33,8 @@ body {
 .work,
 .contact {
 	position: absolute;
-	width: 100vw;
-	height: 70vh;
+	width: 100%;
+	height: 70%;
 	display: flex;
 	justify-content: center;
 	margin-top: 0;
@@ -51,7 +50,7 @@ body {
 
 .headerText {
 	font-family: BlackDiamonds, Fallback, Gobold;;
-	font-size: 10vh;
+	font-size: 24px;
 	color: #fc2020;
 	display: block;
 }
@@ -221,7 +220,7 @@ body {
 	font-size: 3vh;
 	color: #4b4747;
 	margin: 10px 0;
-	padding: 2px 15px;
+	padding: 5px 30px;
 	cursor: pointer;
 }
 
