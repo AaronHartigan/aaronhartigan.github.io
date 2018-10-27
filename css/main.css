@@ -131,6 +131,8 @@ body {
 	min-height: calc(100% / 3);
 	display: flex;
 	cursor: pointer;
+	padding: 20px 0;
+	margin: 10px 0;
 }
 
 .workTextBox:hover {
