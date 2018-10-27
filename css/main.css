@@ -33,7 +33,8 @@ body {
 	margin-top: 100% !important;
 	height: 0 !important;
 	overflow: hidden !important;
-	position: absolute;
+	position: absolute !important;
+	display: none !important;
 }
 
 /* Home */
@@ -43,7 +44,7 @@ body {
 .work,
 .contact {
 	width: 100%;
-	height: 70%;
+	min-height: 70%;
 	display: flex;
 	justify-content: center;
 	margin-top: 0;
