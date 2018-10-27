@@ -249,11 +249,11 @@ body {
 		max-height: 100%;
 	}
 	
-	.aboutContainer: {
+	.aboutContainer {
 		padding: 20px;
 	}
 	
-	.contentContainer: {
+	.contentContainer {
 		padding: 20px;
 	}
 }
