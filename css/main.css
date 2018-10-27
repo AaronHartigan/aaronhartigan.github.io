@@ -225,6 +225,7 @@ body {
 	.work,
 	.contact {
 		display: block;
+		min-height: auto;
 	}
 
 	.navigation > span {
