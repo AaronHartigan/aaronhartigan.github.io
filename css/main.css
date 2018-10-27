@@ -250,10 +250,10 @@ body {
 	}
 	
 	.aboutContainer {
-		padding: 20px;
+		padding: 20px 25px;
 	}
 	
-	.contentContainer {
-		padding: 20px;
+	.contactContainer {
+		padding: 20px 25px;
 	}
 }
