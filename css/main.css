@@ -118,7 +118,7 @@ body {
 .workTextSection {
 	width: 95%;
 	margin-left: 20px;
-	height: 350px;
+	min-height: 350px;
 	align-self: center;
 }
 
@@ -128,7 +128,7 @@ body {
 
 .workTextBox {
 	width: 100%;
-	height: calc(100% / 3);
+	min-height: calc(100% / 3);
 	display: flex;
 	cursor: pointer;
 }
