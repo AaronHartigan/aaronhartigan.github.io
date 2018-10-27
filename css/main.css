@@ -245,8 +245,8 @@ body {
 	}
 
 	.workDisplay > img {
-		width: 85%;
-		height: 85%;
+		max-width: 100%;
+		max-height: 100%;
 	}
 	
 	.aboutContainer: padding: 0;
