@@ -219,6 +219,14 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
+	.home,
+	.about,
+	.experience,
+	.work,
+	.contact {
+		display: block;
+	}
+
 	.navigation > span {
 		display: block;
 	}
