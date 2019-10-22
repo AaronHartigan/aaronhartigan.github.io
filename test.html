@@ -3,24 +3,30 @@
 
 <body>
   <p>
-    <span id="container"> Window Inner Height:
-      <span id="results">
-    </span>
+    Inner Height: <div id="inner"></div>
+  </p>
+  <p>
+    Outer Height: <div id="outer"></div>
   </p>
 </body>
 
 <script>
-  const container = document.querySelector('#container');
-  const results = document.querySelector('#results');
-
+  const inner = document.querySelector('#inner');
+  const outer = document.querySelector('#outer');
+  
   let timerCounter = 0
   const step = 10
   const printer = () => {
     timerCounter += step
+    
     const node = document.createElement("div")
-    results.appendChild(node)
-    innerDiv.textContent = window.innerHeight
-    outerDiv.textContent = window.innerWidth
+    node.innerText = window.innerHeight
+    inner.appendChild(node)
+    
+    const node2 = document.createElement("div")
+    node2.innerText = window.outerHeight
+    inner.appendChild(node2)
+    
     if (timerCounter < 1000) {
       setTimeout(printer, step)
     } else {
@@ -33,8 +39,11 @@
   }
   
   const reset = () => {
-    while (results.children.length) {
-      results.removeChild(results.children[0])
+    while (inner.children.length) {
+      inner.removeChild(inner.children[0])
+    }
+    while (outer.children.length) {
+      outer.removeChild(outer.children[0])
     }
   }
 </script>
