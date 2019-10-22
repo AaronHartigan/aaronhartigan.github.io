@@ -1,0 +1,27 @@
+<html>
+<body>
+<p>Window inner height: <span id="inner"></span></p>
+<p>Window outer height: <span id="outer"></span></p>
+</body>
+<script>
+const innerDiv = document.querySelector('#inner');
+const outerDiv = document.querySelector('#outer');
+let timerCounter = 0
+const step = 10
+const printer = () => {
+  timerCounter += step
+  innerDiv.textContent = window.innerHeight
+  outerDiv.textContent = window.innerWidth
+  if (timerCounter < 1000) {
+    setTimeout(printer, step)
+  } else {
+    timerCounter = 0
+  }
+}
+  window.onresize = () => {
+    printer()
+  }
+  innerDiv.textContent = "Waiting..."
+  outerDiv.textContent = "Waiting..."
+</script>
+</html>
