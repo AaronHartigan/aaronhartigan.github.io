@@ -33,6 +33,11 @@
       timerCounter = 0
     }
   }
+  window.onresize = () => {
+    const node = document.createElement("div")
+    node.innerText = "RESIZE"
+    inner.appendChild(node)
+  }
   window.onorientationchange = () => {
     reset()
     printer()
