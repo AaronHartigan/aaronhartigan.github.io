@@ -1,28 +1,41 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <body>
-<p>Window inner height: <span id="inner"></span></p>
-<p>Window outer height: <span id="outer"></span></p>
+  <p>
+    <span id="container"> Window Inner Height:
+      <span id="results">
+    </span>
+  </p>
 </body>
+
 <script>
-const innerDiv = document.querySelector('#inner');
-const outerDiv = document.querySelector('#outer');
-let timerCounter = 0
-const step = 10
-const printer = () => {
-  timerCounter += step
-  innerDiv.textContent = window.innerHeight
-  outerDiv.textContent = window.innerWidth
-  if (timerCounter < 1000) {
-    setTimeout(printer, step)
-  } else {
-    timerCounter = 0
+  const container = document.querySelector('#container');
+  const results = document.querySelector('#results');
+
+  let timerCounter = 0
+  const step = 10
+  const printer = () => {
+    timerCounter += step
+    const node = document.createElement("div")
+    results.appendChild(node)
+    innerDiv.textContent = window.innerHeight
+    outerDiv.textContent = window.innerWidth
+    if (timerCounter < 1000) {
+      setTimeout(printer, step)
+    } else {
+      timerCounter = 0
+    }
   }
-}
   window.onresize = () => {
+    reset()
     printer()
   }
-  innerDiv.textContent = "Waiting..."
-  outerDiv.textContent = "Waiting..."
+  
+  const reset = () => {
+    while (results.children.length) {
+      results.removeChild(results.children[0])
+    }
+  }
 </script>
 </html>
