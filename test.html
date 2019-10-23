@@ -61,6 +61,14 @@
     }
   }
   
+  window.onscroll = () => {
+    for (element in elements) {
+      const node = document.createElement("div")
+      node.innerText = "SCROLL"
+      document.querySelector("#" + element).appendChild(node)
+    }
+  }
+  
   window.onorientationchange = () => {
     reset()
     printer()
