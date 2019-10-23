@@ -54,7 +54,7 @@
     }
   }
   window.onresize = () => {
-    for (element in elements) {
+    for (const element in elements) {
       const node = document.createElement("div")
       node.innerText = "RESIZE"
       document.querySelector("#" + element).appendChild(node)
@@ -62,7 +62,7 @@
   }
   
   window.onscroll = () => {
-    for (element in elements) {
+    for (const element in elements) {
       const node = document.createElement("div")
       node.innerText = "SCROLL"
       document.querySelector("#" + element).appendChild(node)
@@ -75,7 +75,7 @@
   }
   
   const reset = () => {
-    for (element of elements) {
+    for (const element of elements) {
       const ele = document.querySelector("#" + element)
       while (ele.children.length) {
         ele.removeChild(ele.children[0])
