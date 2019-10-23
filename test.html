@@ -54,7 +54,7 @@
     }
   }
   window.onresize = () => {
-    for (const element in elements) {
+    for (const element of elements) {
       const node = document.createElement("div")
       node.innerText = "RESIZE"
       document.querySelector("#" + element).appendChild(node)
@@ -65,7 +65,6 @@
     for (const element of elements) {
       const node = document.createElement("div")
       node.innerText = "SCROLL"
-      document.querySelector('#offset')
       document.querySelector("#" + element).appendChild(node)
     }
   }
