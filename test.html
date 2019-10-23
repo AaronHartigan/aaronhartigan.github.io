@@ -3,16 +3,20 @@
 
 <body>
   <p>
-    Inner, Outer Height: <div id="inner"></div>
+    Window Inner, Outer Height: <div id="inner"></div>
   </p>
   <p>
-    Outer Height: <div id="outer"></div>
+    Document Client Height: <div id="client"></div>
+  </p>
+  <p>
+    Document Body Offset Height: <div id="offset"></div>
   </p>
 </body>
 
 <script>
   const inner = document.querySelector('#inner');
-  const outer = document.querySelector('#outer');
+  const client = document.querySelector('#client');
+  const offset = document.querySelector('#offset');
   
   let timerCounter = 0
   const step = 10
@@ -23,9 +27,13 @@
     node.innerText = window.innerHeight + ", " + window.outerHeight
     inner.appendChild(node)
     
-    // const node2 = document.createElement("div")
-    // node2.innerText = window.outerHeight
-    // outer.appendChild(node2)
+    const node1 = document.createElement("div")
+    node1.innerText = document.documentElement.clientHeight
+    client.appendChild(node1)
+    
+    const node2 = document.createElement("div")
+    node2.innerText = document.body.offsetHeight
+    offset.appendChild(node2)
     
     if (timerCounter < 1000) {
       setTimeout(printer, step)
@@ -37,6 +45,14 @@
     const node = document.createElement("div")
     node.innerText = "RESIZE"
     inner.appendChild(node)
+    
+    const node1 = document.createElement("div")
+    node1.innerText = "RESIZE"
+    client.appendChild(node1)
+    
+    const node2 = document.createElement("div")
+    node2.innerText = "RESIZE"
+    offset.appendChild(node2)
   }
   window.onorientationchange = () => {
     reset()
