@@ -62,9 +62,10 @@
   }
   
   window.onscroll = () => {
-    for (const element in elements) {
+    for (const element of elements) {
       const node = document.createElement("div")
       node.innerText = "SCROLL"
+      document.querySelector('#offset')
       document.querySelector("#" + element).appendChild(node)
     }
   }
@@ -81,7 +82,7 @@
         ele.removeChild(ele.children[0])
       }
     }
-    for (const element in elements) {
+    for (const element of elements) {
       const node = document.createElement("div")
       node.innerText = "START"
       document.querySelector("#" + element).appendChild(node)
