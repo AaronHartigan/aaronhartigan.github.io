@@ -23,26 +23,29 @@
 </body>
 
 <script>
-  const inner = document.querySelector('#inner');
-  const client = document.querySelector('#client');
-  const offset = document.querySelector('#offset');
+  const elements = ['inner', 'client', 'offset'];
   
   let timerCounter = 0
   const step = 10
   const printer = () => {
     timerCounter += step
-    
-    const node = document.createElement("div")
-    node.innerText = window.innerHeight + ", " + window.outerHeight
-    inner.appendChild(node)
-    
-    const node1 = document.createElement("div")
-    node1.innerText = document.documentElement.clientHeight
-    client.appendChild(node1)
-    
-    const node2 = document.createElement("div")
-    node2.innerText = document.body.offsetHeight
-    offset.appendChild(node2)
+    for (const element of elements) {
+      const node = document.createElement("div")
+      switch (element) {
+        case 'inner':
+          node.innerText = window.innerHeight + ", " + window.outerHeight
+          break;
+        case 'client':
+          node.innerText = document.body.offsetHeight
+          break;
+        case 'offset':
+          node.innerText = document.body.offsetHeight
+          break;
+        default:
+          break;
+      }
+      document.querySelector("#" + element).appendChild(node)
+    }
     
     if (timerCounter < 1000) {
       setTimeout(printer, step)
@@ -51,32 +54,24 @@
     }
   }
   window.onresize = () => {
-    const node = document.createElement("div")
-    node.innerText = "RESIZE"
-    inner.appendChild(node)
-    
-    const node1 = document.createElement("div")
-    node1.innerText = "RESIZE"
-    client.appendChild(node1)
-    
-    const node2 = document.createElement("div")
-    node2.innerText = "RESIZE"
-    offset.appendChild(node2)
+    for (element in elements) {
+      const node = document.createElement("div")
+      node.innerText = "RESIZE"
+      document.querySelector("#" + element).appendChild(node)
+    }
   }
+  
   window.onorientationchange = () => {
     reset()
     printer()
   }
   
   const reset = () => {
-    while (inner.children.length) {
-      inner.removeChild(inner.children[0])
-    }
-    while (client.children.length) {
-      client.removeChild(client.children[0])
-    }
-    while (offset.children.length) {
-      offset.removeChild(offset.children[0])
+    for (element of elements) {
+      const ele = document.querySelector("#" + element)
+      while (ele.children.length) {
+        ele.removeChild(ele.children[0])
+      }
     }
   }
 </script>
