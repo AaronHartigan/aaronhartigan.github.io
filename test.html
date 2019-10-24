@@ -82,12 +82,14 @@
   const safariVersion = document.createElement("div")
   document.body.appendChild(safariVersion)
   safariVersion.innerText += "Safari Version: "
-  const safariStr = navigator.userAgent.split("AppleWebKit/")[1]
+  const safariStr = navigator.userAgent.split("Version/")[1]
   if (safariStr) {
     const major = safariStr.split(".")[0]
     const minor = safariStr.split(".")[1]
     const version = safariStr.split(".")[2]
+    safariVersion += major + '.' + minor
     
+    /*
     if (major == 608) {
       safariVersion.innerText += "13.0"
     } else if (major == 607) {
@@ -103,6 +105,7 @@
     } else if (major == 602) {
       safariVersion.innerText += "10.0"
     }
+    */
   }
   
   const userAgent = document.createElement("div")
