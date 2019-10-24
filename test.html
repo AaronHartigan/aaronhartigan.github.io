@@ -28,15 +28,16 @@
     timerCounter += step
     for (const element of elements) {
       const node = document.createElement("div")
+      node.innerText = `${step * timerCounter}ms: `
       switch (element) {
         case 'inner':
-          node.innerText = window.innerHeight + ", " + window.outerHeight
+          node.innerText += window.innerHeight + ", " + window.outerHeight
           break;
         case 'client':
-          node.innerText = document.body.offsetHeight
+          node.innerText += document.body.offsetHeight
           break;
         case 'offset':
-          node.innerText = document.body.offsetHeight
+          node.innerText += document.body.offsetHeight
           break;
         default:
           break;
