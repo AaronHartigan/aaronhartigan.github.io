@@ -89,9 +89,6 @@
   
   const safariStr = navigator.userAgent.split("Version/")[1]
   if (safariStr) {
-    const test = document.createElement("div")
-    test.innerText = safariStr
-    document.body.appendChild(test)
     const major = safariStr.split(".")[0]
     const minor = safariStr.split(".")[1]
     const version = safariStr.split(".")[2]
