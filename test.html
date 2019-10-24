@@ -82,7 +82,7 @@
   const safariVersion = document.createElement("div")
   document.body.appendChild(safariVersion)
   safariVersion.innerText += "Safari Version: "
-  const safariStr = navigator.userAgent.split("Webkit/")[1]
+  const safariStr = navigator.userAgent.split("AppleWebKit/")[1]
   if (safariStr) {
     const major = safariStr.split(".")[0]
     const minor = safariStr.split(".")[1]
