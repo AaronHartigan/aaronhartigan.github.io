@@ -53,9 +53,11 @@
       document.querySelector("#" + element).appendChild(node)
     }
     
-    if (timerCounter < 1000) {
+    if (timerCounter < 1000 && !cancelPrint) {
       setTimeout(printer, step)
     } else {
+      cancelPrint = false
+      isRunning = false
       timerCounter = 0
     }
   }
@@ -75,7 +77,11 @@
     }
   }
   
+  let cancelPrint = false
   window.onorientationchange = () => {
+    if (isPrinting) {
+     cancelPrint = true 
+    }
     reset()
     printer()
   }
