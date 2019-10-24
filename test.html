@@ -53,11 +53,9 @@
       document.querySelector("#" + element).appendChild(node)
     }
     
-    if (timerCounter < 1000 && !cancelPrint) {
+    if (timerCounter < 1000) {
       setTimeout(printer, step)
     } else {
-      cancelPrint = false
-      isRunning = false
       timerCounter = 0
     }
   }
@@ -77,11 +75,7 @@
     }
   }
   
-  let cancelPrint = false
   window.onorientationchange = () => {
-    if (isPrinting) {
-     cancelPrint = true 
-    }
     reset()
     printer()
   }
@@ -93,6 +87,7 @@
         ele.removeChild(ele.children[0])
       }
     }
+    timerCounter = 0
   }
   const safariVersion = document.createElement("div")
   document.body.appendChild(safariVersion)
