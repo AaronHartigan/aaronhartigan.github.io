@@ -66,6 +66,10 @@
       document.querySelector("#" + element).appendChild(node)
     }
   }
+  window.onload = () => {
+    reset()
+    printer()
+  }
   
   window.onscroll = () => {
     for (const element of elements) {
