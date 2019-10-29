@@ -62,9 +62,9 @@
       node.innerText = "RESIZE"
       document.querySelector("#" + element).appendChild(node)
     }
+    styleBody()
   }
   window.onload = () => {
-    styleBody()
     reset()
     printer()
   }
