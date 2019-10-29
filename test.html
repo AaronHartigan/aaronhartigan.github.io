@@ -39,7 +39,7 @@
           node.innerText += window.innerHeight + ", " + window.outerHeight
           break;
         case 'client':
-          node.innerText += document.body.offsetHeight
+          node.innerText += document.documentElement.clientHeight
           break;
         case 'offset':
           node.innerText += document.body.offsetHeight
