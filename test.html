@@ -3,6 +3,7 @@
 <head>
   <style>
     body, html {
+      min-height: 100%;
     }
   </style>
 </head>
@@ -62,7 +63,6 @@
       node.innerText = "RESIZE"
       document.querySelector("#" + element).appendChild(node)
     }
-    styleBody()
   }
   window.onload = () => {
     reset()
