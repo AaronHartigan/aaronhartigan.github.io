@@ -16,7 +16,7 @@
   </style>
 </head>
 <body>
-  Ver 2.9
+  Ver 3.0
   <p>
     <div style="overflow: scroll; height:200px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -43,6 +43,10 @@
     // viewportMeta.setAttribute("width", "device-width");
     // viewportMeta.setAttribute("height", "device-height");
     viewportMeta.setAttribute("content", "height=" + 500 + "px, width=" + 500 + "px, initial-scale=1.0");
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize")) 
+      viewportMeta.setAttribute("content", "width=device-width, height=device-height, initial-scale=1");
+    }, 1000)
   }
   
   let timerCounter = 0
