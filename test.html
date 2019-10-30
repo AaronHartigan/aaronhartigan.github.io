@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-  Ver 1.6
+  Ver 1.7
   <p>
     <div style="overflow: scroll; height:200px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -57,7 +57,9 @@
       }
       document.querySelector("#" + element).appendChild(node)
     }
-    
+    if (timerCounter === 500) {
+      window.dispatchEvent(new Event("resize")) 
+    }
     if (timerCounter < 1000) {
       setTimeout(printer, step)
     } else {
