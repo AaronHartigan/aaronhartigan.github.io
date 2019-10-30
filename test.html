@@ -17,7 +17,7 @@
   </style>
 </head>
 <body>
-  Ver 3.4
+  Ver 3.5
   <p>
     <div style="overflow: scroll; height:200px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -150,7 +150,23 @@
         document.body.appendChild(input)
         input.focus()
         // input.blur()
-        document.body.removeChild(input)
+        // document.body.removeChild(input)
+    }
+    
+    window.ontouchend = () => {
+        const input = document.createElement("input")
+        document.body.appendChild(input)
+        input.focus()
+        // input.blur()
+        // document.body.removeChild(input)
+    }
+    
+    window.ontouchstart = () => {
+        const input = document.createElement("input")
+        document.body.appendChild(input)
+        input.focus()
+        // input.blur()
+        // document.body.removeChild(input)
     }
   }
 </script>
