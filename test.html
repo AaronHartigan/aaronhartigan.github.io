@@ -17,7 +17,7 @@
   </style>
 </head>
 <body>
-  Ver 1.9
+  Ver 2.0
   <p>
     <div style="overflow: scroll; height:200px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -30,7 +30,7 @@
   </p>
   <p>
     <div style="overflow: scroll; height:80px; background:rgba(0, 0, 0, 0.1);">
-      Document Body Offset Height: <div id="offset"></div>
+      Screen Height: <div id="offset"></div>
     </div>
   </p>
 </body>
@@ -54,7 +54,7 @@
           node.innerText += document.documentElement.clientHeight
           break;
         case 'offset':
-          node.innerText += document.body.offsetHeight
+          node.innerText += window.screen.height
           break;
         default:
           break;
