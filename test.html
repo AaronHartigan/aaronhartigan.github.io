@@ -10,10 +10,6 @@
       margin: 0;
       padding: 0;
     }
-    p {
-      margin: 2, 0;
-      padding: 0;
-    }
   </style>
 </head>
 <body>
@@ -36,19 +32,7 @@
 </body>
 
 <script>
-  // min-height: -webkit-fill-available;
   const elements = ['inner', 'client', 'offset'];
-  const viewportMeta = document.getElementById("viewport-id")
-  
-  const setViewport = () => {
-    // viewportMeta.setAttribute("width", "device-width");
-    // viewportMeta.setAttribute("height", "device-height");
-    // viewportMeta.setAttribute("content", "height=" + 500 + "px, width=" + 500 + "px, initial-scale=1.0");
-    setTimeout(() => {
-      // window.dispatchEvent(new Event("resize")) 
-      // viewportMeta.setAttribute("content", "width=device-width, height=device-height, initial-scale=1");
-    }, 1000)
-  }
   
   let timerCounter = 0
   const step = 10
@@ -72,12 +56,6 @@
       }
       document.querySelector("#" + element).appendChild(node)
     }
-    if (timerCounter === 500) {
-      // window.prompt()
-      window.getComputedStyle(document.body)
-      // setViewport()
-      // window.dispatchEvent(new Event("resize")) 
-    }
     if (timerCounter < 1000) {
       setTimeout(printer, step)
     } else {
@@ -90,12 +68,7 @@
       node.innerText = "RESIZE"
       document.querySelector("#" + element).appendChild(node)
     }
-  }
-  window.onload = () => {
-    reset()
-    printer()
-  }
-  
+  }  
   window.onscroll = () => {
     for (const element of elements) {
       const node = document.createElement("div")
@@ -103,7 +76,10 @@
       document.querySelector("#" + element).appendChild(node)
     }
   }
-  
+  window.onload = () => {
+    reset()
+    printer()
+  }
   window.onorientationchange = () => {
     reset()
     printer()
@@ -118,6 +94,7 @@
     }
     timerCounter = 0
   }
+  
   const safariVersion = document.createElement("div")
   document.body.appendChild(safariVersion)
   safariVersion.innerText += "Safari Version: "
@@ -132,15 +109,6 @@
     const minor = safariStr.split(".")[1]
     const version = safariStr.split(".")[2]
     safariVersion.innerText += " " + major + '.' + minor
-  }
-  
-  const styleBody = () => {
-    document.body.style.height = "100%"
-    document.body.style.minHeight = "100%"
-    document.body.style.maxHeight = "100%"
-    document.documentElement.style.height = "100%"
-    document.documentElement.style.minHeight = "100%"
-    document.documentElement.style.maxHeight = "100%"
   }
   
   const forceReflow = () => {
