@@ -16,7 +16,7 @@
   </style>
 </head>
 <body>
-  Ver 2.2
+  Ver 2.3
   <p>
     <div style="overflow: scroll; height:200px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -37,11 +37,11 @@
 <script>
   // min-height: -webkit-fill-available;
   const elements = ['inner', 'client', 'offset'];
-  const viewportMeta = document.getElementById('viewport-meta')
+  const viewportMeta = document.getElementById("viewport-id")
   
   const setViewport = () => {
-			viewportMeta.setAttribute("width", "device-width");
-	}
+    viewportMeta.setAttribute("width", "device-width");
+  }
   
   let timerCounter = 0
   const step = 10
