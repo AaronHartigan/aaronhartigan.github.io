@@ -16,7 +16,7 @@
   </style>
 </head>
 <body>
-  Ver 2.4
+  Ver 2.5
   <p>
     <div style="overflow: scroll; height:200px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -67,8 +67,9 @@
       document.querySelector("#" + element).appendChild(node)
     }
     if (timerCounter === 500) {
-      window.prompt()
-      window.dispatchEvent(new Event("resize")) 
+      // window.prompt()
+      window.alert("!")
+      // window.dispatchEvent(new Event("resize")) 
     }
     if (timerCounter < 1000) {
       setTimeout(printer, step)
