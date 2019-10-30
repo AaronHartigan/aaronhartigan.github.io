@@ -17,7 +17,7 @@
   </style>
 </head>
 <body>
-  Ver 3.2
+  Ver 3.3
   <p>
     <div style="overflow: scroll; height:200px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -141,6 +141,17 @@
     document.documentElement.style.height = "100%"
     document.documentElement.style.minHeight = "100%"
     document.documentElement.style.maxHeight = "100%"
+  }
+  
+  if (document.documentElement.clientHeight > window.innerHeight) {
+    // force reflow by creating a input
+    window.ontouchmove = () => {
+        const input = document.createElement("input")
+        document.body.appendChild(input)
+        input.focus()
+        input.blur()
+        document.body.removeChild(input)
+    }
   }
 </script>
 </html>
