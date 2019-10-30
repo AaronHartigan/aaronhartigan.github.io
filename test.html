@@ -17,7 +17,7 @@
   </style>
 </head>
 <body>
-  Ver 3.8
+  Ver 3.9
   <p>
     <div style="overflow: scroll; height:200px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -149,6 +149,7 @@
     input.focus()
     input.blur()
     document.body.removeChild(input)
+    window.alert(' :) ')
     window.removeEventListener("touchstart", forceReflow)
   }
   window.addEventListener("touchstart", forceReflow)
