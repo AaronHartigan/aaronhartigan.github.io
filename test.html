@@ -17,7 +17,7 @@
   </style>
 </head>
 <body>
-  Ver 3.1
+  Ver 3.2
   <p>
     <div style="overflow: scroll; height:200px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -43,10 +43,10 @@
   const setViewport = () => {
     // viewportMeta.setAttribute("width", "device-width");
     // viewportMeta.setAttribute("height", "device-height");
-    viewportMeta.setAttribute("content", "height=" + 500 + "px, width=" + 500 + "px, initial-scale=1.0");
+    // viewportMeta.setAttribute("content", "height=" + 500 + "px, width=" + 500 + "px, initial-scale=1.0");
     setTimeout(() => {
-      window.dispatchEvent(new Event("resize")) 
-      viewportMeta.setAttribute("content", "width=device-width, height=device-height, initial-scale=1");
+      // window.dispatchEvent(new Event("resize")) 
+      // viewportMeta.setAttribute("content", "width=device-width, height=device-height, initial-scale=1");
     }, 1000)
   }
   
@@ -75,8 +75,8 @@
     if (timerCounter === 500) {
       // window.prompt()
       window.getComputedStyle(document.body)
-      setViewport()
-      window.dispatchEvent(new Event("resize")) 
+      // setViewport()
+      // window.dispatchEvent(new Event("resize")) 
     }
     if (timerCounter < 1000) {
       setTimeout(printer, step)
