@@ -62,6 +62,7 @@
       document.querySelector("#" + element).appendChild(node)
     }
     if (timerCounter === 500) {
+      window.alert("hi")
       window.dispatchEvent(new Event("resize")) 
     }
     if (timerCounter < 1000) {
