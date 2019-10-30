@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1" id="viewport-id">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<head>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+    p {
+      margin: 2, 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  Ver 4.0
+  <p>
+    <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
+      Window Inner, Outer Height: <div id="inner"></div>
+    </div>
+  </p>
+  <p>
+    <div style="overflow: scroll; height:100px; background:rgba(0, 0, 0, 0.1);">
+      Document Client Height: <div id="client"></div>
+    </div>
+  </p>
+  <p>
+    <div style="overflow: scroll; height:100px; background:rgba(0, 0, 0, 0.1);">
+      Screen Height: <div id="offset"></div>
+    </div>
+  </p>
+</body>
+
+<script>
+  // min-height: -webkit-fill-available;
+  const elements = ['inner', 'client', 'offset'];
+  const viewportMeta = document.getElementById("viewport-id")
+  
+  const setViewport = () => {
+    // viewportMeta.setAttribute("width", "device-width");
+    // viewportMeta.setAttribute("height", "device-height");
+    // viewportMeta.setAttribute("content", "height=" + 500 + "px, width=" + 500 + "px, initial-scale=1.0");
+    setTimeout(() => {
+      // window.dispatchEvent(new Event("resize")) 
+      // viewportMeta.setAttribute("content", "width=device-width, height=device-height, initial-scale=1");
+    }, 1000)
+  }
+  
+  let timerCounter = 0
+  const step = 10
+  const printer = () => {
+    timerCounter += step
+    for (const element of elements) {
+      const node = document.createElement("div")
+      node.innerText = `${timerCounter}ms: `
+      switch (element) {
+        case 'inner':
+          node.innerText += window.innerHeight + ", " + window.outerHeight
+          break;
+        case 'client':
+          node.innerText += document.documentElement.clientHeight
+          break;
+        case 'offset':
+          node.innerText += window.screen.height
+          break;
+        default:
+          break;
+      }
+      document.querySelector("#" + element).appendChild(node)
+    }
+    if (timerCounter === 500) {
+      // window.prompt()
+      window.getComputedStyle(document.body)
+      // setViewport()
+      // window.dispatchEvent(new Event("resize")) 
+    }
+    if (timerCounter < 1000) {
+      setTimeout(printer, step)
+    } else {
+      timerCounter = 0
+    }
+  }
+  window.onresize = () => {
+    for (const element of elements) {
+      const node = document.createElement("div")
+      node.innerText = "RESIZE"
+      document.querySelector("#" + element).appendChild(node)
+    }
+  }
+  window.onload = () => {
+    reset()
+    printer()
+  }
+  
+  window.onscroll = () => {
+    for (const element of elements) {
+      const node = document.createElement("div")
+      node.innerText = "SCROLL"
+      document.querySelector("#" + element).appendChild(node)
+    }
+  }
+  
+  window.onorientationchange = () => {
+    reset()
+    printer()
+  }
+  
+  const reset = () => {
+    for (const element of elements) {
+      const ele = document.querySelector("#" + element)
+      while (ele.children.length) {
+        ele.removeChild(ele.children[0])
+      }
+    }
+    timerCounter = 0
+  }
+  const safariVersion = document.createElement("div")
+  document.body.appendChild(safariVersion)
+  safariVersion.innerText += "Safari Version: "
+    
+  const userAgent = document.createElement("div")
+  userAgent.innerText = navigator.userAgent
+  document.body.appendChild(userAgent)
+  
+  const safariStr = navigator.userAgent.split("Version/")[1]
+  if (safariStr) {
+    const major = safariStr.split(".")[0]
+    const minor = safariStr.split(".")[1]
+    const version = safariStr.split(".")[2]
+    safariVersion.innerText += " " + major + '.' + minor
+  }
+  
+  const styleBody = () => {
+    document.body.style.height = "100%"
+    document.body.style.minHeight = "100%"
+    document.body.style.maxHeight = "100%"
+    document.documentElement.style.height = "100%"
+    document.documentElement.style.minHeight = "100%"
+    document.documentElement.style.maxHeight = "100%"
+  }
+</script>
+</html>
