@@ -40,8 +40,10 @@
   const viewportMeta = document.getElementById("viewport-id")
   
   const setViewport = () => {
-    viewportMeta.setAttribute("width", "device-width");
-    viewportMeta.setAttribute("height", "device-height");
+    // viewportMeta.setAttribute("width", "device-width");
+    // viewportMeta.setAttribute("height", "device-height");
+    viewportMeta.setAttribute("content", "height=" + 500 + "px, width=" + 
+    500 + "px, initial-scale=1.0");
   }
   
   let timerCounter = 0
@@ -67,8 +69,10 @@
       document.querySelector("#" + element).appendChild(node)
     }
     if (timerCounter === 500) {
-      window.prompt()
-      // window.dispatchEvent(new Event("resize")) 
+      // window.prompt()
+      window.getComputedStyle()
+      setViewport()
+      window.dispatchEvent(new Event("resize")) 
     }
     if (timerCounter < 1000) {
       setTimeout(printer, step)
