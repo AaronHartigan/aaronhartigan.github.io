@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-  Ver 4.0
+  Ver 4.1
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -78,6 +78,11 @@
   }
   window.onload = () => {
     reset()
+    for (const element of elements) {
+      const node = document.createElement("div")
+      node.innerText = "LOAD"
+      document.querySelector("#" + element).appendChild(node)
+    }
     printer()
   }
   window.onorientationchange = () => {
