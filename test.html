@@ -1,5 +1,5 @@
 <html>
-<meta name="viewport" content="width=device-width, initial-scale=1" id="viewport-id">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1" id="viewport-id">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -16,7 +16,7 @@
   </style>
 </head>
 <body>
-  Ver 2.3
+  Ver 2.4
   <p>
     <div style="overflow: scroll; height:200px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -41,6 +41,7 @@
   
   const setViewport = () => {
     viewportMeta.setAttribute("width", "device-width");
+    viewportMeta.setAttribute("height", "device-height");
   }
   
   let timerCounter = 0
