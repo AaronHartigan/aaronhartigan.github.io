@@ -12,10 +12,18 @@
       overflow: hidden;
       position: relative;
     }
+    .block {
+      position: absolute;
+      bottom: 0;
+      height: 100px;
+      width: 200px;
+      background: "blue";
+    }
   </style>
 </head>
 <body>
-  Ver 4.2
+  Ver 4.3
+  <div class="block">hello</div>
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -48,7 +56,7 @@
           node.innerText += window.innerHeight + ", " + window.outerHeight
           break;
         case 'client':
-          node.innerText += document.documentElement.clientHeight
+          node.innerText += document.body.clientHeight
           break;
         case 'offset':
           node.innerText += window.screen.height
