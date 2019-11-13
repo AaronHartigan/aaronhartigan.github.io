@@ -17,7 +17,7 @@
   </style>
 </head>
 <body>
-  Ver 4.0
+  Ver 4.0.1
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -89,6 +89,22 @@
       const node = document.createElement("div")
       node.innerText = "RESIZE"
       document.querySelector("#" + element).appendChild(node)
+      const node2 = document.createElement("div")
+      node2.innerText = `${timerCounter}ms: `
+      switch (element) {
+        case 'inner':
+          node2.innerText += window.innerHeight + ", " + window.outerHeight
+          break;
+        case 'client':
+          node2.innerText += document.documentElement.clientHeight
+          break;
+        case 'offset':
+          node2.innerText += window.screen.height
+          break;
+        default:
+          break;
+      }
+      document.querySelector("#" + element).appendChild(node2)
     }
   }
   window.onload = () => {
