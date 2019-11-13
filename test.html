@@ -23,7 +23,7 @@
   </style>
 </head>
 <body>
-  Ver 5.9
+  Ver 6.0
   <div class="block">hello</div>
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
@@ -77,43 +77,43 @@
       timerCounter = 0
     }
   }
-  window.onresize = () => {
-    for (const element of elements) {
-      const node = document.createElement("div")
-      node.innerText = "RESIZE"
-      document.querySelector("#" + element).appendChild(node)
-    }
-    addMeasurements()
-    // document.body.style.height = window.innerHeight + "px"
-  }  
-  window.onscroll = () => {
-    for (const element of elements) {
-      const node = document.createElement("div")
-      node.innerText = "SCROLL"
-      document.querySelector("#" + element).appendChild(node)
-    }
-  }
-  window.onload = () => {
-    reset()
-    for (const element of elements) {
-      const node = document.createElement("div")
-      node.innerText = "LOAD"
-      document.querySelector("#" + element).appendChild(node)
-    }
-    printer()
-  }
-  window.onorientationchange = () => {
-    reset()
-    printer()
-  }
-  window.addEventListener('readystatechange', (event) => {
-    for (const element of elements) {
-      const node = document.createElement("div")
-      node.innerText = `READY STATE: ${document.readyState}`
-      document.querySelector("#" + element).appendChild(node)
-    }
-    addMeasurements()
-  })
+  window.addEventListener('resize', () => {
+        for (const element of elements) {
+            const node = document.createElement("div")
+            node.innerText = "RESIZE"
+            document.querySelector("#" + element).appendChild(node)
+        }
+        addMeasurements()
+        // document.body.style.height = window.innerHeight + "px"
+    })
+    window.addEventListener('scroll', () => {
+        for (const element of elements) {
+            const node = document.createElement("div")
+            node.innerText = "SCROLL"
+            document.querySelector("#" + element).appendChild(node)
+        }
+    })
+    window.addEventListener('load', () => {
+        reset()
+        for (const element of elements) {
+            const node = document.createElement("div")
+            node.innerText = "LOAD"
+            document.querySelector("#" + element).appendChild(node)
+        }
+        printer()
+    })
+    window.addEventListener('orientationchange', () => {
+        reset()
+        printer()
+    })
+    window.addEventListener('readystatechange', (event) => {
+        for (const element of elements) {
+            const node = document.createElement("div")
+            node.innerText = `READY STATE: ${document.readyState}`
+            document.querySelector("#" + element).appendChild(node)
+        }
+        addMeasurements()
+    })
   
   const reset = () => {
     for (const element of elements) {
