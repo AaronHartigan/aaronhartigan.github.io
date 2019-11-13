@@ -23,7 +23,7 @@
   </style>
 </head>
 <body>
-  Ver 5.4
+  Ver 5.5
   <div class="block">hello</div>
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
@@ -47,9 +47,9 @@
   
   let timerCounter = 0
   const step = 10
-  const printer = () => {
-    timerCounter += step
-    for (const element of elements) {
+  
+  const addMeasurements = () => {
+   for (const element of elements) {
       const node = document.createElement("div")
       node.innerText = `${timerCounter}ms: `
       switch (element) {
@@ -66,6 +66,12 @@
           break;
       }
       document.querySelector("#" + element).appendChild(node)
+    } 
+  }
+  const printer = () => {
+      timerCounter += step
+      addMeasurements()
+      document.querySelector("#" + element).appendChild(node)
     }
     if (timerCounter < 1000) {
       setTimeout(printer, step)
@@ -79,7 +85,8 @@
       node.innerText = "RESIZE"
       document.querySelector("#" + element).appendChild(node)
     }
-    document.body.style.height = window.innerHeight + "px"
+    addMeasurements()
+    // document.body.style.height = window.innerHeight + "px"
   }  
   window.onscroll = () => {
     for (const element of elements) {
