@@ -23,7 +23,7 @@
   </style>
 </head>
 <body>
-  Ver 6.1
+  Ver 6.2
   <div class="block">hello</div>
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
@@ -100,6 +100,7 @@
             node.innerText = "LOAD"
             document.querySelector("#" + element).appendChild(node)
         }
+        addMeasurements()
         printer()
     })
     window.addEventListener('orientationchange', () => {
