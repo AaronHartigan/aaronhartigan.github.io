@@ -23,7 +23,7 @@
   </style>
 </head>
 <body>
-  Ver 6.0
+  Ver 6.1
   <div class="block">hello</div>
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
@@ -51,7 +51,7 @@
   const addMeasurements = () => {
    for (const element of elements) {
       const node = document.createElement("div")
-      node.innerText = `${timerCounter}ms: `
+      node.innerText = `${Date.now() - window.performance.timing.domContentLoadedEventEnd}ms: `
       switch (element) {
         case 'inner':
           node.innerText += window.innerHeight + ", " + window.outerHeight
