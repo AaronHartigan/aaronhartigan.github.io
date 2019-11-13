@@ -22,7 +22,7 @@
   </style>
 </head>
 <body>
-  Ver 4.9
+  Ver 5.0
   <div class="block">hello</div>
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
@@ -78,7 +78,7 @@
       node.innerText = "RESIZE"
       document.querySelector("#" + element).appendChild(node)
     }
-    document.body.style.maxHeight = window.innerHeight
+    // document.body.style.maxHeight = window.innerHeight
   }  
   window.onscroll = () => {
     for (const element of elements) {
