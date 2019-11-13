@@ -23,7 +23,7 @@
   </style>
 </head>
 <body>
-  Ver 5.6
+  Ver 5.7
   <div class="block">hello</div>
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
@@ -69,10 +69,9 @@
     } 
   }
   const printer = () => {
-      timerCounter += step
-      addMeasurements()
-      document.querySelector("#" + element).appendChild(node)
-    }
+    timerCounter += step
+    addMeasurements()
+    document.querySelector("#" + element).appendChild(node)
     if (timerCounter < 1000) {
       setTimeout(printer, step)
     } else {
