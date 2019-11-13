@@ -23,7 +23,7 @@
   </style>
 </head>
 <body>
-  Ver 5.5
+  Ver 5.6
   <div class="block">hello</div>
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
@@ -108,6 +108,14 @@
     reset()
     printer()
   }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    for (const element of elements) {
+      const node = document.createElement("div")
+      node.innerText = "DOM FULLY LOADED"
+      document.querySelector("#" + element).appendChild(node)
+    }
+    addMeasurements()
+  })
   
   const reset = () => {
     for (const element of elements) {
