@@ -23,7 +23,7 @@
   </style>
 </head>
 <body>
-  Ver 5.8
+  Ver 5.9
   <div class="block">hello</div>
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
@@ -106,10 +106,10 @@
     reset()
     printer()
   }
-  window.addEventListener('DOMContentLoaded', (event) => {
+  window.addEventListener('readystatechange', (event) => {
     for (const element of elements) {
       const node = document.createElement("div")
-      node.innerText = "DOM FULLY LOADED"
+      node.innerText = `READY STATE: ${document.readyState}`
       document.querySelector("#" + element).appendChild(node)
     }
     addMeasurements()
