@@ -20,7 +20,7 @@
   </style>
 </head>
 <body>
-  Ver 6.9
+  Ver 7.0
   <div class="block">hello</div>
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
@@ -48,9 +48,7 @@
   const addMeasurements = () => {
    for (const element of elements) {
       const node = document.createElement("div")
-      alert("PRE WINDOW PERFORMANCE")
       node.innerText = `${Date.now() - window.performance.timing.domContentLoadedEventEnd}ms: `
-      alert("PRE SWITCH")
       switch (element) {
         case 'inner':
           node.innerText += window.innerHeight + ", " + window.outerHeight
@@ -59,12 +57,11 @@
           node.innerText += document.body.clientHeight + ", " + document.body.offsetHeight
           break;
         case 'offset':
-          node.innerText += window.screen.height + ", " + window.visualViewport.height
+          node.innerText += window.screen.height + ", " // + window.visualViewport.height
           break;
         default:
           break;
       }
-      alert("PRE QUERY SELECTOR")
       document.querySelector("#" + element).appendChild(node)
     } 
   }
@@ -99,11 +96,8 @@
             node.innerText = "LOAD"
             document.querySelector("#" + element).appendChild(node)
         }
-        alert("PRE ADD MESUREMENTS")
         addMeasurements()
-        alert("PRE PRINTER")
         printer()
-        alert("POST PRINTER")
     })
     window.addEventListener('orientationchange', () => {
         reset()
