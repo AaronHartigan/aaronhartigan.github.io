@@ -20,7 +20,7 @@
   </style>
 </head>
 <body>
-  Ver 7.0
+  Ver 7.1
   <div class="block">hello</div>
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
@@ -34,7 +34,7 @@
   </p>
   <p>
     <div style="overflow: scroll; height:100px; background:rgba(0, 0, 0, 0.1);">
-      Screen Height, Viewport Height: <div id="offset"></div>
+      Window Inner, Outer Width: <div id="offset"></div>
     </div>
   </p>
 </body>
@@ -57,7 +57,7 @@
           node.innerText += document.body.clientHeight + ", " + document.body.offsetHeight
           break;
         case 'offset':
-          node.innerText += window.screen.height + ", " // + window.visualViewport.height
+          node.innerText += window.innerWidth + ", " + window.outerWidth
           break;
         default:
           break;
