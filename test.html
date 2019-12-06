@@ -20,7 +20,7 @@
   </style>
 </head>
 <body>
-  Ver 6.8
+  Ver 6.9
   <div class="block">hello</div>
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
@@ -48,7 +48,9 @@
   const addMeasurements = () => {
    for (const element of elements) {
       const node = document.createElement("div")
+      alert("PRE WINDOW PERFORMANCE")
       node.innerText = `${Date.now() - window.performance.timing.domContentLoadedEventEnd}ms: `
+      alert("PRE SWITCH")
       switch (element) {
         case 'inner':
           node.innerText += window.innerHeight + ", " + window.outerHeight
@@ -62,6 +64,7 @@
         default:
           break;
       }
+      alert("PRE QUERY SELECTOR")
       document.querySelector("#" + element).appendChild(node)
     } 
   }
