@@ -20,7 +20,7 @@
   </style>
 </head>
 <body>
-  Ver 7.1
+  Ver 7.2
   <div class="block">hello</div>
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
@@ -37,10 +37,20 @@
       Window Inner, Outer Width: <div id="offset"></div>
     </div>
   </p>
+  <p>
+    <div style="overflow: scroll; height:100px; background:rgba(0, 0, 0, 0.1);">
+      Document Client Width, Offset Width: <div id="clientWidth"></div>
+    </div>
+  </p>
+  <p>
+    <div style="overflow: scroll; height:100px; background:rgba(0, 0, 0, 0.1);">
+      Screen Width, Height: <div id="screen"></div>
+    </div>
+  </p>
 </body>
 
 <script>
-  const elements = ['inner', 'client', 'offset'];
+  const elements = ['inner', 'client', 'offset', 'clientWidth', 'screen'];
   
   let timerCounter = 0
   const step = 10
@@ -58,6 +68,12 @@
           break;
         case 'offset':
           node.innerText += window.innerWidth + ", " + window.outerWidth
+          break;
+        case 'clientWidth':
+          node.innerText += document.body.clientWidth + ", " + document.body.offsetWidth
+          break;
+        case 'screen':
+          node.innerText += window.screen.width + ", " + window.screen.height
           break;
         default:
           break;
