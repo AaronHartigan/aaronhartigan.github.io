@@ -154,6 +154,16 @@
     safariVersion.innerText += " " + major + '.' + minor
   }
   
+  document.body.addEventListener("touchstart", () => {
+    console.log("TOUCH START")
+  })
+  document.body.addEventListener("touchmove", () => {
+    console.log("TOUCH MOVE")
+  })
+  document.body.addEventListener("click", () => {
+    console.log("ON CLICK")
+  })
+  
   /*
   const forceReflow = () => {
     const input = document.createElement("input")
