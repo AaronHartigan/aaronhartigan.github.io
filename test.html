@@ -20,7 +20,8 @@
   </style>
 </head>
 <body>
-  Ver 7.3
+  Ver 7.4
+<!--
   <p>
     <div style="overflow: scroll; height:160px; background:rgba(0, 0, 0, 0.1);">
       Window Inner, Outer Height: <div id="inner"></div>
@@ -46,10 +47,12 @@
       Screen Width, Height: <div id="screen"></div>
     </div>
   </p>
+-->
   <input type="text">
 </body>
 
 <script>
+  /*
   const elements = ['inner', 'client', 'offset', 'clientWidth', 'screen'];
   
   let timerCounter = 0
@@ -153,6 +156,7 @@
     const version = safariStr.split(".")[2]
     safariVersion.innerText += " " + major + '.' + minor
   }
+  */
   
   document.body.addEventListener("touchstart", () => {
     console.log("TOUCH START")
