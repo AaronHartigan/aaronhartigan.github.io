@@ -2,25 +2,66 @@
 <h1> Shaders in OpenGL </h1>
 You've probably of shaders before, maybe in the context of a custom minecraft or skyrim mod.
 And if you are were like me, you have no idea what they are actually about.
-
+<br />
+  
 To give a mile-high overview of what shaders are, shaders are the piece of code that takes a 3D scene and turns it into a picture 
 So this talk is meant to give a pretty in-depth, technical explanation of exactly how shaders do what they do.
-
+<br />
+  
 I myself first learned about shaders a little over a year ago.  I took a game architecture class in college,
 and I was really intrigued at how the game engine actually drew each frame.  So I learned all I could about shaders so I could implement
 them myself.  Obviously Im no expert, this talk is targetted mainly for beginner.  With that said, lets get started.
-
+<br />
+  
 Before jumping into shaders, lets talk about the emvironment in which they are used.  Shaders can come in different languages.
 You may have heard of Direct3D, or Apple's new Metal framework.  The one we'll be looking at today is called OpenGL, which stands 
 for Open Graphics Library, and it uses GLSL - OpenGL Shading Language.
 OpenGL is just an API for rendering graphics.  It lets you do things like upload a list of vertices, textures, and any other data you have
 it then sends all that data through graphics pipline.
-
+<br />
+  
 And technically, OpenGL is just a specification.
 To use OpenGL, you need a implementation of it, which exists in many different languages.
 By default, it has C bindings, but if you want to use JavaScript, there is WebGL.
-
+<br />
+  
 OpenGL is extremely boiler-platey.  A simple program is going to have hundreds of lines of code.
 As a result, basically everyone working with it will use some sort of library on top of it.
-In Javascript, the most popular one I believe is called Three.js.  
+In Javascript, the most popular one I believe is called Three.js.
+<br />
+  
+So let's dive into what a shader can do.  The first one we'll look at is the vertex shader.  Here's a simple example
+where the vertex shader is given 3 points of data, so it draws a triangle.
+So you may be wondering, if the programmer supplies the vertex data, what is the point of the vertex shader?  Why can't it
+just use the data given it?  To answer that, let's imagine a typical scenario.  Let's say you have a cube object, and you
+know what its vertices are.  But you want to move it to a particular spot in the world.  In addition, you have a camera object
+and you only want to render the vertices that appear in the camera fustrum - that's the part of the world the camera can see.
+So, you have vertex data, then you have its world position data, and you have camera data.  The vertex shader's job
+is to take all of the info, and convert all the vertices to x and y values between -1 and 1.  Anything
+outside of that range gets discarded, its out of view.  SO this may seem like a really complicated task, super math heavy.
+But it actually comes down to a couple simple matrix multiplications.
+And usually, the vertex shader doesn't really do much work outside of this.  Since shaders usually run on the GPU,
+it can parallelize all of the vertex calculations.  But besides that, the vertex shader is kind of boring.
+<br />
+
+Now we get to the fun part, the fragment shader.  At this point in the rendering pipeline, the vertices have already been turned
+into triangles, and those triangles have been rasterized into pixels.  The fragment shader's job is to color in each pixel.
+The simplest thing it can do is just do a texture lookup.  But as the name "shader" suggests, you usually do 
+some sort of lightning calculation to "shade" your mesh. One of the simplest and most popular ways to lighting
+is known as Phong shading, which uses ambient, diffuse, and specular lighting.  Ambient light is light
+that lights an object up regardless of position.  Diffuse light is light that lights an surfec based on the angle
+between the light source and surface.  A surface that is directly perpendicular to a light gets the most diffuse light,
+and a surface that is sideways the light source gets no diffuse light.  And finally, specular light is light that depends
+on the light source direction, and surface angle, and the angle the camera is looking at.  Specular light is basically
+the light that reflects directly off of the surface into your eye - its basically a highlight.
+<br />
+
+So that's the most common use of the fragment shader, to do lightning calculations.  But there are a lot of fun things
+you can do if you do what is called multi-pass rendering, whcih is just running the same scene through 
+the rendering pipeline multiple times using differnt shaders so you can combine their effects into one image.
+
+<br />
+
+So shaders can do a lot of things.  You are mostly limited by your imagination.  Hopefully now you all have a deeper understanding
+of what a shader actually does and how it works.  And Id be happy to ansewr any questions.
 </body>
