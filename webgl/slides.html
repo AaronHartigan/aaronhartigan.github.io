@@ -1,0 +1,26 @@
+<body>
+<h1> Shaders in OpenGL </h1>
+You've probably of shaders before, maybe in the context of a custom minecraft or skyrim mod.
+And if you are were like me, you have no idea what they are actually about.
+
+To give a mile-high overview of what shaders are, shaders are the piece of code that takes a 3D scene and turns it into a picture 
+So this talk is meant to give a pretty in-depth, technical explanation of exactly how shaders do what they do.
+
+I myself first learned about shaders a little over a year ago.  I took a game architecture class in college,
+and I was really intrigued at how the game engine actually drew each frame.  So I learned all I could about shaders so I could implement
+them myself.  Obviously Im no expert, this talk is targetted mainly for beginner.  With that said, lets get started.
+
+Before jumping into shaders, lets talk about the emvironment in which they are used.  Shaders can come in different languages.
+You may have heard of Direct3D, or Apple's new Metal framework.  The one we'll be looking at today is called OpenGL, which stands 
+for Open Graphics Library, and it uses GLSL - OpenGL Shading Language.
+OpenGL is just an API for rendering graphics.  It lets you do things like upload a list of vertices, textures, and any other data you have
+it then sends all that data through graphics pipline.
+
+And technically, OpenGL is just a specification.
+To use OpenGL, you need a implementation of it, which exists in many different languages.
+By default, it has C bindings, but if you want to use JavaScript, there is WebGL.
+
+OpenGL is extremely boiler-platey.  A simple program is going to have hundreds of lines of code.
+As a result, basically everyone working with it will use some sort of library on top of it.
+In Javascript, the most popular one I believe is called Three.js.  
+</body>
