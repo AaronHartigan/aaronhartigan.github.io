@@ -93,7 +93,7 @@ void main(void) {
 	highp float spec = max(dot(N, H), 0.0);
   highp float ambient = 0.2;
   highp float diffuse = 0.0;
-  gl_FragColor = vec4(vec3(0, 0, 1) * specular + vec3(0, 0, 1) * lambertian, 1);
+  gl_FragColor = vec4(vec3(1, 1, 1) * specular + vec3(0, 0, 1) * lambertian, 1);
 }
 `;
 
