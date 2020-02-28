@@ -1,0 +1,173 @@
+<html>
+<head>
+<style>
+	.spacer {
+		height: 500px;
+		width: 100px;
+	}
+	body {
+		background-color: #FCFCFC;
+		font: #222;
+		font-size: 24px;
+		margin: 40px;
+		font-family: Helvetica;
+	}
+	h1 {
+		font-size: 60px;
+	}
+	h2 {
+		font-size: 28px;
+		margin-left: 30px;
+	}
+	img {
+		height: 400px;
+		width: 600px;
+	}
+	.large {
+		height: 359px;
+		width: 628px;
+	}
+	pre {
+		background: #f4f4f4;
+		border: 1px solid #ddd;
+		border-left: 3px solid #f36d33;
+		color: #666;
+		page-break-inside: avoid;
+		font-family: monospace;
+		font-size: 20px;
+		line-height: 1.6;
+		margin-bottom: 1.6em;
+		max-width: 100%;
+		overflow: auto;
+		padding: 1em 1.5em;
+		display: block;
+		word-wrap: break-word;
+		margin-left: 30px;
+	}
+</style>
+</head>
+<body>
+
+<h1>Shaders in OpenGL</h1>
+<h2>They draw pictures and stuff</h2>
+<img src="images/title.jpg" />
+
+<div class="spacer"></div>
+
+<h1>My Background</h1>
+<h2>Learned shaders while taking a game architecture class</h2>
+<img src="images/class.png" />
+
+<div class="spacer"></div>
+<h1>Where are shaders used?</h1>
+<h2> OpenGL, Direct3D, Metal </h2>
+<h2> - JOGL, WebGL </h2>
+<pre>
+// Example JavaScript using WebGL
+const canvas = document.createElement("canvas");
+const gl = canvas.getContext("webgl");
+...
+gl.bufferData(
+    gl.ARRAY_BUFFER,
+    new Float32Array([-1.0, 1.0, 1.0, 1.0, -1.0, -1.0, 1.0, -1.0]),
+    gl.STATIC_DRAW
+);
+...
+gl.drawArrays(gl.TRIANGLE_STRIP, offset, vertexCount);
+</pre>
+
+<div class="spacer"></div>
+
+<h1>The Pipeline</h1>
+<h2>You upload the shaders you want along with the vertex data</h2>
+<img class="large" src="images/pipeline-2.png" />
+
+<div class="spacer"></div>
+
+<h1>The Vertex Shader</h1>
+<img src="images/example.png"></img>
+<pre>
+const positions = [
+    -0.5, -0.5, 0.0, // bottom-left
+     0.5, -0.5, 0.0, // bottom-right
+     0.0,  0.5, 0.0 // top
+];
+</pre>
+<pre>
+const vertexShaderCode = `
+
+attribute vec4 vertexPosition;
+uniform mat4 worldPosition;
+uniform mat4 cameraMatrix;
+
+void main() {
+  gl_Position = cameraMatrix * worldPosition * vertexPosition;
+}
+`;
+</pre>
+<div class="spacer"></div>
+
+<h1>The Fragment Shader</h1>
+<h2>Phong lighting model</h2>
+<canvas id="2"></canvas>
+<button onclick="ambient()">Ambient</button>
+<button onclick="diffuse()">+ Diffuse</button>
+<button onclick="specular()">+ Specular</button>
+<pre>
+attribute vec3 position;
+attribute vec3 normal;
+uniform mat4 projection, modelview, normalMat;
+varying vec3 normalInterp;
+varying vec3 vertPos;
+uniform vec3 lightPos; // Light position
+
+void main(){
+  vec4 vertPos4 = modelview * vec4(position, 1.0);
+  vertPos = vec3(vertPos4) / vertPos4.w;
+  normalInterp = vec3(normalMat * vec4(normal, 0.0));
+  gl_Position = projection * vertPos4;
+
+  vec3 N = normalize(normalInterp);
+  vec3 L = normalize(lightPos - vertPos);
+  // Lambert's cosine law
+  float diffuseAngle = max(dot(N, L), 0.0);
+  float specular = 0.0;
+  if(diffuseAngle > 0.0) {
+    vec3 R = reflect(-L, N);      // Reflected light vector
+    vec3 V = normalize(-vertPos); // Vector to viewer
+    // Compute the specular term
+    float specAngle = max(dot(R, V), 0.0);
+    specular = pow(specAngle, shininessVal);
+  }
+  vec3 diffuseColor = diffuseAngle * vec3(0, 0, 1)
+  vec3 sepcularColor = specular * vec3(0, 0, 1)
+  color = vec4(ambientColor + diffuseColor + sepcularColor , 1.0);
+ </pre>
+<div class="spacer"></div>
+
+<h1>Fun with shaders</h1>
+<h2>Multipass rendering</h2>
+<h2> - water</h2>
+<h2> - shadows</h2>
+<h2> - transparency</h2>
+<h2> - motion blur</h2>
+
+<div class="spacer"></div>
+
+<div class="spacer"></div>
+
+<script src="gl.js"></script>
+<script src="gl2.js"></script>
+<script>
+	function ambient() {
+	isAmbient=true;isDiffuse=false;isSpecular=false;
+	}
+	function diffuse() {
+	isAmbient=false;isDiffuse=true;isSpecular=false;
+	}
+	function specular() {
+	isAmbient=false;isDiffuse=false;isSpecular=true;
+	}
+</script>
+</body>
+</html>
