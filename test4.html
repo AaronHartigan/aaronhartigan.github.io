@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<head>
+  <style>
+    .big-body {
+      background: repeating-linear-gradient(
+        45deg,
+        #606dbc,
+        #606dbc 10px,
+        #465298 10px,
+        #465298 20px
+      );
+      width: 3000px;
+      height: 3000px;
+    }
+
+    #dash {
+      position: fixed;
+      top: 50px;
+      left: 50px;
+      background: #bbb;
+      width: 200px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="big-body">
+    <div id="dash"></div>
+  </div>
+</body>
+
+<script>
+  document.addEventListener("scroll", () => {
+    document.querySelector("#dash").innerText = `scrollX ${document.documentElement.scrollLeft} \n scrollY ${document.documentElement.scrollTop}`
+  })
+</script>
+</html>
