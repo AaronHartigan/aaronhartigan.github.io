@@ -35,7 +35,7 @@
 </body>
 
 <script>
-  function update {
+  function update() {
     document.querySelector("#dash").innerText = `scrollX ${document.documentElement.scrollLeft} \n scrollY ${document.documentElement.scrollTop} \n VisualViewport ${window.visualViewport.offsetLeft}`
   }
   document.addEventListener("scroll", () => {
