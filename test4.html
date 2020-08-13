@@ -35,8 +35,14 @@
 </body>
 
 <script>
-  document.addEventListener("scroll", () => {
+  function update {
     document.querySelector("#dash").innerText = `scrollX ${document.documentElement.scrollLeft} \n scrollY ${document.documentElement.scrollTop} \n VisualViewport ${window.visualViewport.offsetLeft}`
+  }
+  document.addEventListener("scroll", () => {
+    update()
   })
+  setInterval(() => {
+    update()
+  }, 250)
 </script>
 </html>
