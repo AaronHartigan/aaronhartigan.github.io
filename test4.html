@@ -36,7 +36,7 @@
 
 <script>
   document.addEventListener("scroll", () => {
-    document.querySelector("#dash").innerText = `scrollX ${document.documentElement.scrollLeft} \n scrollY ${document.documentElement.scrollTop}`
+    document.querySelector("#dash").innerText = `scrollX ${document.documentElement.scrollLeft} \n scrollY ${document.documentElement.scrollTop} \n VisualViewport ${window.visualViewport.offsetLeft}`
   })
 </script>
 </html>
