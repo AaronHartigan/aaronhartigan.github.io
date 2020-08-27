@@ -88,6 +88,15 @@
             documentVisibilityChange.fire(isTabActive)
         })
     }
+    window.addEventListenerPoly("pagehide", () => {
+        isTabActive = false
+        debug("Page Hidden")
+    })
+
+    window.addEventListenerPoly("pageshow", () => {
+        isTabActive = true
+        debug("Page Shown")
+    })
   </script>
 </body>
 </html>
