@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <script>
+    console.log("Page has loaded")
+    
+    let hidden = ""
+    let visibilityChange = ""
+    if ("hidden" in document) {
+        hidden = "hidden"
+        visibilityChange = "visibilitychange"
+    } else if ("msHidden" in document) {
+        hidden = "msHidden"
+        visibilityChange = "msvisibilitychange"
+    } else if ("webkitHidden" in document) {
+        hidden = "webkitHidden"
+        visibilityChange = "webkitvisibilitychange"
+    }
+
+    let isTabActive = true
+    if (hidden !== "" && visibilityChange !== "") {
+        console.log("Using visibility change event")
+        addEventListenerPoly(visibilityChange, document, () => {
+            if (document[hidden]) {
+                console.log("Document Visibility Change: Hidden")
+                isTabActive = false
+            } else {
+                console.log("Document Visiblity Change: Visible")
+                isTabActive = true
+            }
+            documentVisibilityChange.fire(isTabActive)
+        })
+    } else {
+        console.log("Falling back to blur/focus")
+        // Use window blur/focus events as fallback for document.hidden
+        addEventListenerPoly("blur", window, () => {
+            isTabActive = false
+            console.log("Document blurred")
+            documentVisibilityChange.fire(isTabActive)
+        })
+
+        addEventListenerPoly("focus", window, () => {
+            isTabActive = true
+            console.log("Document Focused")
+            documentVisibilityChange.fire(isTabActive)
+        })
+    }
+  </script>
+</body>
+</html>
