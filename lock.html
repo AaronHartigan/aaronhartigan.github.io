@@ -3,11 +3,28 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+<style>
+  body {
+    background-color: #FCFCFC;
+    font: #222;
+    font-size: 18px;
+    margin: 40px;
+    font-family: Helvetica;
+  }
+</style>
 </head>
 
 <body>
+  <div>CONSOLE LOG</div>
+  <div id="output"></div>
   <script>
-    console.log("Page has loaded")
+    const debug = (msg) => {
+      const output = document.getElementById("output")
+      const message = document.createElement("div")
+      message.innerText = msg
+      output.appendChild(message)
+    }
+    debug("Page has loaded")
     
     let hidden = ""
     let visibilityChange = ""
@@ -27,10 +44,10 @@
         console.log("Using visibility change event")
         addEventListenerPoly(visibilityChange, document, () => {
             if (document[hidden]) {
-                console.log("Document Visibility Change: Hidden")
+                debug("Document Visibility Change: Hidden")
                 isTabActive = false
             } else {
-                console.log("Document Visiblity Change: Visible")
+                debug("Document Visiblity Change: Visible")
                 isTabActive = true
             }
             documentVisibilityChange.fire(isTabActive)
@@ -40,13 +57,13 @@
         // Use window blur/focus events as fallback for document.hidden
         addEventListenerPoly("blur", window, () => {
             isTabActive = false
-            console.log("Document blurred")
+            debug("Document blurred")
             documentVisibilityChange.fire(isTabActive)
         })
 
         addEventListenerPoly("focus", window, () => {
             isTabActive = true
-            console.log("Document Focused")
+            debug("Document Focused")
             documentVisibilityChange.fire(isTabActive)
         })
     }
