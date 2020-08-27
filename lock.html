@@ -15,11 +15,18 @@
 </head>
 
 <body>
-  <div>CONSOLE LOG</div>
+  <div>CONSOLE LOG <button id="clear">Clear</button></div>
   <div id="output"></div>
   <script>
+    const output = document.getElementById("output")
+    const button = document.getElementById("clear")
+    button.onclick = () => {
+      while (output.firstChild) {
+        output.removeChild(output.lastChild)
+      }
+    }
+    
     const debug = (msg) => {
-      const output = document.getElementById("output")
       const message = document.createElement("div")
       message.innerText = msg
       output.appendChild(message)
