@@ -21,12 +21,16 @@
     const getSeconds = () => {
       return Math.round(Date.now() / 1000)
     }
+    function padLeft(nr, n, str){
+        return Array(n-String(nr).length+1).join(str||'0')+nr;
+    }
     const start = getSeconds()
     const getTimestamp = () => {
       const seconds = getSeconds() - start
       const mins = Math.floor(seconds / 60)
       const secs = seconds % 60
-      return `${mins}:${secs}`
+      const pad = "00"
+      return `${padLeft(mins, 2)}:${padLeft(secs, 2)}`
     }
     const output = document.getElementById("output")
     const button = document.getElementById("clear")
