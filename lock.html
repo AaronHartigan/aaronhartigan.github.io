@@ -21,8 +21,9 @@
     const getSeconds = () => {
       return Math.round(Date.now() / 1000)
     }
+    const start = getSeconds()
     const getTimestamp = () => {
-      const seconds = getSeconds()
+      const seconds = getSeconds() - start
       const mins = Math.floor(seconds / 60)
       const secs = seconds % 60
       return `${mins}:${secs}`
@@ -38,7 +39,7 @@
     
     const debug = (msg) => {
       const message = document.createElement("div")
-      message.innerText = `+${getTimestamp()} msg`
+      message.innerText = `+${getTimestamp()} ${msg}`
       output.appendChild(message)
     }
     debug("Page has loaded")
