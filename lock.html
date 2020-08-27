@@ -76,6 +76,7 @@
     } else {
         debug("Falling back to blur/focus")
         // Use window blur/focus events as fallback for document.hidden
+    }
         window.addEventListener("blur", () => {
             isTabActive = false
             debug("Document blurred")
@@ -87,7 +88,6 @@
             debug("Document Focused")
             documentVisibilityChange.fire(isTabActive)
         })
-    }
     window.addEventListener("pagehide", () => {
         isTabActive = false
         debug("Page Hidden")
