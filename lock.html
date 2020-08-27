@@ -18,6 +18,16 @@
   <div>CONSOLE LOG <button id="clear">Clear</button></div>
   <div id="output"></div>
   <script>
+    const getSeconds = () => {
+      return Math.round(Date.now() / 1000)
+    }
+    const getTimestamp = () => {
+      const seconds = getSeconds()
+      const mins = Math.floor(seconds / 60)
+      const secs = seconds % 60
+      return `${mins}:${secs}`
+    }
+    const start = getSeconds()
     const output = document.getElementById("output")
     const button = document.getElementById("clear")
     button.onclick = () => {
@@ -28,7 +38,7 @@
     
     const debug = (msg) => {
       const message = document.createElement("div")
-      message.innerText = msg
+      message.innerText = `+${getTimestamp()} msg`
       output.appendChild(message)
     }
     debug("Page has loaded")
