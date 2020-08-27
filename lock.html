@@ -76,24 +76,24 @@
     } else {
         debug("Falling back to blur/focus")
         // Use window blur/focus events as fallback for document.hidden
-        window.addEventListenerPoly("blur", () => {
+        window.addEventListener("blur", () => {
             isTabActive = false
             debug("Document blurred")
             documentVisibilityChange.fire(isTabActive)
         })
 
-        window.addEventListenerPoly("focus", () => {
+        window.addEventListener("focus", () => {
             isTabActive = true
             debug("Document Focused")
             documentVisibilityChange.fire(isTabActive)
         })
     }
-    window.addEventListenerPoly("pagehide", () => {
+    window.addEventListener("pagehide", () => {
         isTabActive = false
         debug("Page Hidden")
     })
 
-    window.addEventListenerPoly("pageshow", () => {
+    window.addEventListener("pageshow", () => {
         isTabActive = true
         debug("Page Shown")
     })
