@@ -41,8 +41,8 @@
 
     let isTabActive = true
     if (hidden !== "" && visibilityChange !== "") {
-        console.log("Using visibility change event")
-        addEventListenerPoly(visibilityChange, document, () => {
+        debug("Using visibility change event")
+        document.addEventListener(visibilityChange, () => {
             if (document[hidden]) {
                 debug("Document Visibility Change: Hidden")
                 isTabActive = false
@@ -53,15 +53,15 @@
             documentVisibilityChange.fire(isTabActive)
         })
     } else {
-        console.log("Falling back to blur/focus")
+        debug("Falling back to blur/focus")
         // Use window blur/focus events as fallback for document.hidden
-        addEventListenerPoly("blur", window, () => {
+        window.addEventListenerPoly("blur", () => {
             isTabActive = false
             debug("Document blurred")
             documentVisibilityChange.fire(isTabActive)
         })
 
-        addEventListenerPoly("focus", window, () => {
+        window.addEventListenerPoly("focus", () => {
             isTabActive = true
             debug("Document Focused")
             documentVisibilityChange.fire(isTabActive)
