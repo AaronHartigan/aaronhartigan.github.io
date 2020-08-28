@@ -78,8 +78,6 @@ if (hidden !== "" && visibilityChange !== "") {
       debug("Document Visiblity Change: Visible");
       isTabActive = true;
     }
-
-    documentVisibilityChange.fire(isTabActive);
   });
 } else {
   debug("Falling back to blur/focus"); // Use window blur/focus events as fallback for document.hidden
@@ -88,12 +86,10 @@ if (hidden !== "" && visibilityChange !== "") {
 window.addEventListener("blur", function () {
   isTabActive = false;
   debug("Document blurred");
-  documentVisibilityChange.fire(isTabActive);
 });
 window.addEventListener("focus", function () {
   isTabActive = true;
   debug("Document Focused");
-  documentVisibilityChange.fire(isTabActive);
 });
 window.addEventListener("pagehide", function () {
   isTabActive = false;
