@@ -18,85 +18,91 @@
   <div>CONSOLE LOG <button id="clear">Clear</button></div>
   <pre id="output"></pre>
   <script>
-    const getSeconds = () => {
-      return Math.round(Date.now() / 1000)
-    }
-    function padLeft(nr, n, str){
-        return Array(n-String(nr).length+1).join(str||'0')+nr;
-    }
-    const start = getSeconds()
-    const getTimestamp = () => {
-      const seconds = getSeconds() - start
-      const mins = Math.floor(seconds / 60)
-      const secs = seconds % 60
-      const pad = "00"
-      return `${padLeft(mins, 2)}:${padLeft(secs, 2)}`
-    }
-    const output = document.getElementById("output")
-    const button = document.getElementById("clear")
-    button.onclick = () => {
-      while (output.firstChild) {
-        output.removeChild(output.lastChild)
-      }
-    }
-    
-    const debug = (msg) => {
-      const message = document.createElement("div")
-      message.innerText = `+${getTimestamp()} ${msg}`
-      output.appendChild(message)
-    }
-    debug("Page has loaded")
-    
-    let hidden = ""
-    let visibilityChange = ""
-    if ("hidden" in document) {
-        hidden = "hidden"
-        visibilityChange = "visibilitychange"
-    } else if ("msHidden" in document) {
-        hidden = "msHidden"
-        visibilityChange = "msvisibilitychange"
-    } else if ("webkitHidden" in document) {
-        hidden = "webkitHidden"
-        visibilityChange = "webkitvisibilitychange"
-    }
+var getSeconds = function getSeconds() {
+  return Math.round(Date.now() / 1000);
+};
 
-    let isTabActive = true
-    if (hidden !== "" && visibilityChange !== "") {
-        debug("Using visibility change event")
-        document.addEventListener(visibilityChange, () => {
-            if (document[hidden]) {
-                debug("Document Visibility Change: Hidden")
-                isTabActive = false
-            } else {
-                debug("Document Visiblity Change: Visible")
-                isTabActive = true
-            }
-            documentVisibilityChange.fire(isTabActive)
-        })
+function padLeft(nr, n, str) {
+  return Array(n - String(nr).length + 1).join(str || '0') + nr;
+}
+
+var start = getSeconds();
+
+var getTimestamp = function getTimestamp() {
+  var seconds = getSeconds() - start;
+  var mins = Math.floor(seconds / 60);
+  var secs = seconds % 60;
+  var pad = "00";
+  return "".concat(padLeft(mins, 2), ":").concat(padLeft(secs, 2));
+};
+
+var output = document.getElementById("output");
+var button = document.getElementById("clear");
+
+button.onclick = function () {
+  while (output.firstChild) {
+    output.removeChild(output.lastChild);
+  }
+};
+
+var debug = function debug(msg) {
+  var message = document.createElement("div");
+  message.innerText = "+".concat(getTimestamp(), " ").concat(msg);
+  output.appendChild(message);
+};
+
+debug("Page has loaded");
+var hidden = "";
+var visibilityChange = "";
+
+if ("hidden" in document) {
+  hidden = "hidden";
+  visibilityChange = "visibilitychange";
+} else if ("msHidden" in document) {
+  hidden = "msHidden";
+  visibilityChange = "msvisibilitychange";
+} else if ("webkitHidden" in document) {
+  hidden = "webkitHidden";
+  visibilityChange = "webkitvisibilitychange";
+}
+
+var isTabActive = true;
+
+if (hidden !== "" && visibilityChange !== "") {
+  debug("Using visibility change event");
+  document.addEventListener(visibilityChange, function () {
+    if (document[hidden]) {
+      debug("Document Visibility Change: Hidden");
+      isTabActive = false;
     } else {
-        debug("Falling back to blur/focus")
-        // Use window blur/focus events as fallback for document.hidden
+      debug("Document Visiblity Change: Visible");
+      isTabActive = true;
     }
-        window.addEventListener("blur", () => {
-            isTabActive = false
-            debug("Document blurred")
-            documentVisibilityChange.fire(isTabActive)
-        })
 
-        window.addEventListener("focus", () => {
-            isTabActive = true
-            debug("Document Focused")
-            documentVisibilityChange.fire(isTabActive)
-        })
-    window.addEventListener("pagehide", () => {
-        isTabActive = false
-        debug("Page Hidden")
-    })
+    documentVisibilityChange.fire(isTabActive);
+  });
+} else {
+  debug("Falling back to blur/focus"); // Use window blur/focus events as fallback for document.hidden
+}
 
-    window.addEventListener("pageshow", () => {
-        isTabActive = true
-        debug("Page Shown")
-    })
+window.addEventListener("blur", function () {
+  isTabActive = false;
+  debug("Document blurred");
+  documentVisibilityChange.fire(isTabActive);
+});
+window.addEventListener("focus", function () {
+  isTabActive = true;
+  debug("Document Focused");
+  documentVisibilityChange.fire(isTabActive);
+});
+window.addEventListener("pagehide", function () {
+  isTabActive = false;
+  debug("Page Hidden");
+});
+window.addEventListener("pageshow", function () {
+  isTabActive = true;
+  debug("Page Shown");
+});
   </script>
 </body>
 </html>
