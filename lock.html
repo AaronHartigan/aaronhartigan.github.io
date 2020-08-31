@@ -21,12 +21,14 @@
   <div>CONSOLE LOG <button id="clear">Clear</button></div>
   <pre id="output"></pre>
   <script>
+"use strict";
+
 var getSeconds = function getSeconds() {
   return Math.round(Date.now() / 1000);
 };
 
 function padLeft(nr, n, str) {
-  return Array(n - String(nr).length + 1).join(str || '0') + nr;
+  return Array(n - String(nr).length + 1).join(str || "0") + nr;
 }
 
 var start = getSeconds();
@@ -83,25 +85,34 @@ if (hidden !== "" && visibilityChange !== "") {
     }
   });
 } else {
-  debug("Falling back to blur/focus"); // Use window blur/focus events as fallback for document.hidden
+  debug("Falling back to blur/focus");
 }
 
-window.addEventListener("blur", function () {
-  isTabActive = false;
-  debug("Document blurred");
+var eventNames = [
+  "load",
+  "focus",
+  "blur",
+  "change",
+  "close",
+  "error",
+  "haschange",
+  "message",
+  "offline",
+  "online",
+  "pagehide",
+  "pageshow",
+  "popstate",
+  "resize",
+  "submit",
+  "unload",
+  "beforeunload"
+];
+eventNames.forEach(function (event) {
+  window.addEventListener(event, function () {
+    debug("Event ".concat(event, " fired"));
+  });
 });
-window.addEventListener("focus", function () {
-  isTabActive = true;
-  debug("Document Focused");
-});
-window.addEventListener("pagehide", function () {
-  isTabActive = false;
-  debug("Page Hidden");
-});
-window.addEventListener("pageshow", function () {
-  isTabActive = true;
-  debug("Page Shown");
-});
+
   </script>
 </body>
 </html>
