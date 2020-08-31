@@ -78,12 +78,10 @@ if (hidden !== "" && visibilityChange !== "") {
 
   var visibilityChangeListener = function visibilityChangeListener() {
     if (document[hidden]) {
-      documentVisible = false;
+      debug("Document is now HIDDEN");
     } else {
-      documentVisible = true;
+      debug("Document is now VISIBLE");
     }
-
-    documentVisibilityChange.fire(documentVisible);
   };
 
   document.addEventListener(visibilityChange, visibilityChangeListener);
@@ -100,6 +98,7 @@ if (hidden !== "" && visibilityChange !== "") {
       documentVisible = true;
     });
   };
+
   debug("Adding PageHide initializer Fallback listener");
   addEventListener("pagehide", window, initPageShowHideFallback);
 } else {
