@@ -100,7 +100,7 @@ if (hidden !== "" && visibilityChange !== "") {
   };
 
   debug("Adding PageHide initializer Fallback listener");
-  addEventListener("pagehide", window, initPageShowHideFallback);
+  window.addEventListener("pagehide", initPageShowHideFallback);
 } else {
   debug("Falling back to blur/focus");
 }
@@ -129,7 +129,6 @@ eventNames.forEach(function (event) {
     debug("Event ".concat(event, " fired"));
   });
 });
-
   </script>
 </body>
 </html>
