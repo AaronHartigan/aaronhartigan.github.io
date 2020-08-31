@@ -75,15 +75,37 @@ var isTabActive = true;
 
 if (hidden !== "" && visibilityChange !== "") {
   debug("Using visibility change event");
-  document.addEventListener(visibilityChange, function () {
+
+  var visibilityChangeListener = function visibilityChangeListener() {
     if (document[hidden]) {
-      debug("Document Visibility Change: Hidden");
-      isTabActive = false;
+      documentVisible = false;
     } else {
-      debug("Document Visiblity Change: Visible");
-      isTabActive = true;
+      documentVisible = true;
     }
-  });
+
+    documentVisibilityChange.fire(documentVisible);
+  };
+
+  addEventListenerPoly(visibilityChange, document, visibilityChangeListener);
+
+  var initPageShowHideFallback = function initPageShowHideFallback() {
+    debug("INITIALIZING PAGE SHOW/HIDE");
+    removeEventListenerPoly(
+      visibilityChange,
+      document,
+      visibilityChangeListener
+    );
+    removeEventListenerPoly(visibilityChange, window, initPageShowHideFallback);
+    addEventListenerPoly("pagehide", window, function () {
+      debug("THIS WAS FIRED");
+      documentVisible = false;
+    });
+    addEventListenerPoly("pageshow", window, function () {
+      documentVisible = true;
+    });
+  };
+
+  addEventListenerPoly("pagehide", window, initPageShowHideFallback);
 } else {
   debug("Falling back to blur/focus");
 }
