@@ -89,7 +89,7 @@ if (hidden !== "" && visibilityChange !== "") {
   var initPageShowHideFallback = function initPageShowHideFallback() {
     debug("INITIALIZING PAGE SHOW/HIDE");
     document.removeEventListener(visibilityChange, visibilityChangeListener);
-    document.removeEventListener("pagehide", initPageShowHideFallback);
+    window.removeEventListener("pagehide", initPageShowHideFallback);
     window.addEventListener("pagehide", function () {
       debug("THIS WAS FIRED");
       documentVisible = false;
