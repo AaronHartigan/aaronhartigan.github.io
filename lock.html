@@ -125,7 +125,11 @@ var eventNames = [
   "beforeunload"
 ];
 eventNames.forEach(function (event) {
-  window.addEventListener(event, function () {
+  window.addEventListener(event, function (err) {
+    if (event === "error") {
+      console.log(err);
+    }
+
     debug("Event ".concat(event, " fired"));
   });
 });
