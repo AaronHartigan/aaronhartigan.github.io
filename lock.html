@@ -91,11 +91,10 @@ if (hidden !== "" && visibilityChange !== "") {
     document.removeEventListener(visibilityChange, visibilityChangeListener);
     window.removeEventListener("pagehide", initPageShowHideFallback);
     window.addEventListener("pagehide", function () {
-      debug("THIS WAS FIRED");
-      documentVisible = false;
+      debug("PAGE HIDE FIRED AFTER INTITIALIZATION");
     });
     window.addEventListener("pageshow", function () {
-      documentVisible = true;
+      debug("PAGE SHOW FIRED AFTER INTITIALIZATION");
     });
   };
 
