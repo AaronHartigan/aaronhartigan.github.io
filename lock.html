@@ -86,26 +86,22 @@ if (hidden !== "" && visibilityChange !== "") {
     documentVisibilityChange.fire(documentVisible);
   };
 
-  addEventListenerPoly(visibilityChange, document, visibilityChangeListener);
+  document.addEventListener(visibilityChange, visibilityChangeListener);
 
   var initPageShowHideFallback = function initPageShowHideFallback() {
     debug("INITIALIZING PAGE SHOW/HIDE");
-    removeEventListenerPoly(
-      visibilityChange,
-      document,
-      visibilityChangeListener
-    );
-    removeEventListenerPoly(visibilityChange, window, initPageShowHideFallback);
-    addEventListenerPoly("pagehide", window, function () {
+    document.removeEventListener(visibilityChange, visibilityChangeListener);
+    document.removeEventListener("pagehide", initPageShowHideFallback);
+    window.addEventListener("pagehide", function () {
       debug("THIS WAS FIRED");
       documentVisible = false;
     });
-    addEventListenerPoly("pageshow", window, function () {
+    window.addEventListener("pageshow", function () {
       documentVisible = true;
     });
   };
 
-  addEventListenerPoly("pagehide", window, initPageShowHideFallback);
+  addEventListener("pagehide", window, initPageShowHideFallback);
 } else {
   debug("Falling back to blur/focus");
 }
