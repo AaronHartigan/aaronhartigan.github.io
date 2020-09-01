@@ -130,7 +130,15 @@ eventNames.forEach(function (event) {
     }
     if (event === "pagehide") {
       console.log("PAGEHIDE");
-      console.log(err);
+      if (typeof err === "object") {
+       if (err.persisted) {
+        console.log("PERSISTED")
+       } else {
+         console.log("NOT PERSISTED")
+       }
+      } else {
+       console.log("NOT PERSISTED") 
+      }
     }
 
     debug("Event ".concat(event, " fired"));
