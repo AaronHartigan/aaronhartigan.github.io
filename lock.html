@@ -130,10 +130,13 @@ eventNames.forEach(function (event) {
     }
     if (event === "pagehide") {
       console.log("PAGEHIDE");
+      debug("PAGE HIDE EVENT");
       if (err.persisted) {
-        console.log("PERSISTED")
+        console.log("PERSISTED");
+        debug("PAGE HIDE EVENT PERSISTED");
       } else {
-        console.log("NOT PERSISTED")
+        console.log("NOT PERSISTED");
+        debug("PAGE HIDE EVENT NOT PERSISTED");
       }
     }
 
