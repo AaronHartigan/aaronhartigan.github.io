@@ -9,6 +9,7 @@
     body, html {
       margin: 0;
       padding: 0;
+      height: 100%;
     }
     p {
       margin: 2, 0;
@@ -150,15 +151,6 @@
     const minor = safariStr.split(".")[1]
     const version = safariStr.split(".")[2]
     safariVersion.innerText += " " + major + '.' + minor
-  }
-  
-  const styleBody = () => {
-    document.body.style.height = "100%"
-    document.body.style.minHeight = "100%"
-    document.body.style.maxHeight = "100%"
-    document.documentElement.style.height = "100%"
-    document.documentElement.style.minHeight = "100%"
-    document.documentElement.style.maxHeight = "100%"
   }
 </script>
 </html>
